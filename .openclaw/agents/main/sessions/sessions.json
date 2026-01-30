@@ -1,0 +1,68 @@
+{
+  "agent:main:main": {
+    "sessionId": "fcd9bb79-ca31-4ae9-b355-32ea1a2407fc",
+    "updatedAt": 1769782203605,
+    "systemSent": true,
+    "abortedLastRun": false,
+    "chatType": "direct",
+    "deliveryContext": {
+      "channel": "webchat"
+    },
+    "lastChannel": "webchat",
+    "origin": {
+      "provider": "webchat",
+      "surface": "webchat",
+      "chatType": "direct"
+    },
+    "sessionFile": "/teamspace/studios/this_studio/.openclaw/agents/main/sessions/fcd9bb79-ca31-4ae9-b355-32ea1a2407fc.jsonl",
+    "compactionCount": 0,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\n\n<available_skills>\n  <skill>\n    <name>bluebubbles</name>\n    <description>Build or update the BlueBubbles external channel plugin for OpenClaw (extension package, REST send/probe, webhook inbound).</description>\n    <location>/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/bluebubbles/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>github</name>\n    <description>Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI runs, and advanced queries.</description>\n    <location>/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/github/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "bluebubbles"
+        },
+        {
+          "name": "github"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "bluebubbles",
+          "description": "Build or update the BlueBubbles external channel plugin for OpenClaw (extension package, REST send/probe, webhook inbound).",
+          "filePath": "/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/bluebubbles/SKILL.md",
+          "baseDir": "/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/bluebubbles",
+          "source": "openclaw-bundled"
+        },
+        {
+          "name": "github",
+          "description": "Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI runs, and advanced queries.",
+          "filePath": "/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/github/SKILL.md",
+          "baseDir": "/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/github",
+          "source": "openclaw-bundled"
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled"
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/system/conda/node/nvm/versions/node/v22.14.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled"
+        }
+      ],
+      "version": 0
+    }
+  }
+}

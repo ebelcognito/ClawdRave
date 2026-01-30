@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "socket": {
+    "path": "/teamspace/studios/this_studio/.openclaw/exec-approvals.sock",
+    "token": "PzLQVkUOcxdUPlVNUf-tTZOzPLwT4avK"
+  },
+  "defaults": {},
+  "agents": {}
+}
