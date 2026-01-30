@@ -95,7 +95,8 @@
       "allowInsecureAuth": true
     },
     "auth": {
-      "mode": "token"
+      "mode": "token",
+      "token": "${LIGHTNING_API_KEY}"
     },
     "trustedProxies": [
       "any",
