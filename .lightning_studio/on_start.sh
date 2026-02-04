@@ -9,5 +9,4 @@
 # ! fast_load
 # <your file here>
 
-
 openclaw gateway --port 18789 --verbose

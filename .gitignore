@@ -2,3 +2,4 @@
 .openclaw/sessions/*
 .openclaw/workspace/memory/*
 .openclaw/logs
+.openclaw/workspace/memory/*
