@@ -12,13 +12,9 @@
 # Check whether we need to write the initial config from
 # /teamspace/studios/this_studio/initial_openclaw.json into /teamspace/studios/this_studio/.openclaw/openclaw.json
 
-TARGET_DIR="/teamspace/studios/this_studio/.openclaw"
-TARGET_FILE="${TARGET_DIR}/openclaw.json"
-SOURCE_FILE="/teamspace/studios/this_studio/initial_openclaw.json"
+TARGET="/teamspace/studios/this_studio/.openclaw/openclaw.json"
+SOURCE="/teamspace/studios/this_studio/initial_openclaw.json"
 
-if [ ! -f "$TARGET_FILE" ]; then
-    mkdir -p "$TARGET_DIR"
-    cp "$SOURCE_FILE" "$TARGET_FILE"
-fi
+[ ! -f "$TARGET" ] && cp "$SOURCE" "$TARGET"
 
 openclaw gateway --port 18789 --verbose
