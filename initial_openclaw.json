@@ -1,0 +1,116 @@
+{
+    "meta": {
+      "lastTouchedVersion": "2026.2.2-3",
+      "lastTouchedAt": "2026-02-04T12:24:32.137Z"
+    },
+    "env": {
+      "shellEnv": {
+        "enabled": true,
+        "timeoutMs": 15000
+      }
+    },
+    "wizard": {
+      "lastRunAt": "2026-02-04T12:24:32.133Z",
+      "lastRunVersion": "2026.2.2-3",
+      "lastRunCommand": "onboard",
+      "lastRunMode": "local"
+    },
+    "models": {
+      "mode": "merge",
+      "providers": {
+        "custom-proxy": {
+          "baseUrl": "https://lightning.ai/api/v1",
+          "apiKey": "${LIGHTNING_API_KEY}",
+          "auth": "api-key",
+          "api": "openai-completions",
+          "authHeader": false,
+          "models": [
+            {
+              "id": "anthropic/claude-opus-4-5-20251101",
+              "name": "Claude Opus 4.5",
+              "api": "openai-completions",
+              "reasoning": false,
+              "input": [
+                "text"
+              ],
+              "cost": {
+                "input": 0,
+                "output": 0,
+                "cacheRead": 0,
+                "cacheWrite": 0
+              },
+              "contextWindow": 200000,
+              "maxTokens": 200000
+            }
+          ]
+        }
+      }
+    },
+    "agents": {
+      "defaults": {
+        "model": {
+          "primary": "custom-proxy/anthropic/claude-opus-4-5-20251101"
+        },
+        "workspace": "/teamspace/studios/this_studio/.openclaw/workspace",
+        "compaction": {
+          "mode": "safeguard"
+        },
+        "heartbeat": {
+          "model": "custom-proxy/anthropic/claude-opus-4-5-20251101"
+        },
+        "maxConcurrent": 4,
+        "subagents": {
+          "maxConcurrent": 8
+        }
+      }
+    },
+    "messages": {
+      "ackReactionScope": "group-mentions"
+    },
+    "commands": {
+      "native": "auto",
+      "nativeSkills": "auto"
+    },
+    "cron": {
+      "enabled": false,
+      "maxConcurrentRuns": 2
+    },
+    "hooks": {
+      "internal": {
+        "enabled": true,
+        "entries": {
+          "boot-md": {
+            "enabled": true
+          },
+          "command-logger": {
+            "enabled": true
+          },
+          "session-memory": {
+            "enabled": true
+          }
+        }
+      }
+    },
+    "gateway": {
+      "port": 18789,
+      "mode": "local",
+      "bind": "lan",
+      "controlUi": {
+        "allowInsecureAuth": true
+      },
+      "auth": {
+        "mode": "token",
+        "token": "${LIGHTNING_API_KEY}"
+      },
+      "trustedProxies": [
+        "any",
+        "*",
+        "130.211.236.75/24"
+      ],
+      "tailscale": {
+        "mode": "off",
+        "resetOnExit": false
+      }
+    }
+  }
+  
