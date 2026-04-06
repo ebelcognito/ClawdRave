@@ -1,80 +1,118 @@
-# Lightning AI OpenClaw environment
+# ClawdRave
 
-- Gateway starts on boot through .lightning_studio/on_start.sh
+**A safe and efficient framework for collaborative vibecoding.**
 
-## Getting started
+Work with multiple AI agents together — shared context, clear handoffs, and guardrails — so vibecoding stays fast without turning into chaos.
 
-This template launches OpenClaw on start. You will just need to get your personal API key and find the studio URL:
+ClawdRave gives you **Mission Control**: dual agent lanes (Kai & Nova), a **bridge** between them, a **security feed**, conflict handling, and demo or live modes. Collaboration is visible and bounded, not a black box.
 
-1. **Getting your API key**
+---
 
-    Navigate to global settings (top right -> keys):
+## Quick start
 
-    ![API key](docs/api_key.png)
-
-2. **Get studio URL**
-
-    Click on the "API builder" in the right side menu, then click "openclaw" and you will find your URL there. It should look like `https://18789-xxxx.cloudspaces.litng.ai`
-
-    ![Public URL](docs/studio_url.png)
-
-Now append your token to the public URL and copy it into the browser, like:
-
+```bash
+cd clawdrave
+npm install
+npm run dev
 ```
+
+Dev server on **`0.0.0.0:3000`**. For WebSocket bridge work, use `npm run bridge`.
+
+Agent personas and prompts: **`clawdrave/agents/kai/`** and **`clawdrave/agents/nova/`**. More in [`clawdrave/README.md`](clawdrave/README.md).
+
+---
+
+## Features
+
+- **Dual agent lanes** — Kai and Nova work in parallel with clear boundaries
+- **Bridge** — WebSocket bridge for real-time agent coordination
+- **Security feed** — live visibility into what agents are doing
+- **Conflict handling** — automatic detection and resolution when agents collide
+- **Demo & live modes** — try it out safely, then switch to real agents
+
+---
+
+## Repo layout
+
+| Path | What it is |
+|------|------------|
+| **`clawdrave/`** | Core framework — UI + server (React, Vite, TypeScript) |
+| **`docs/`** | Screenshots and hosting docs |
+| **`.lightning_studio/`** | Optional Lightning AI studio boot scripts |
+| **`initial_openclaw.json`** | Template for OpenClaw gateway config |
+
+---
+
+## Hosting on Lightning AI + OpenClaw (optional)
+
+This repo includes everything needed to run ClawdRave inside a **[Lightning AI](https://lightning.ai)** studio with **[OpenClaw](https://docs.openclaw.ai)** for gateway, models, and sessions. Think of Lightning + OpenClaw as one possible **host**; ClawdRave is the product.
+
+<details>
+<summary>Lightning studio setup</summary>
+
+### API key and URL
+
+1. **API key:** Lightning **global settings** (top right) → **keys**. ([`docs/api_key.png`](docs/api_key.png))
+2. **Public URL:** **API builder** → **openclaw** — looks like `https://18789-xxxx.cloudspaces.litng.ai`. ([`docs/studio_url.png`](docs/studio_url.png))
+
+Open in the browser:
+
+```text
 https://18789-YOUR_SUBDOMAIN.cloudspaces.litng.ai?token=YOUR_API_KEY
 ```
 
-## OpenClaw documentation & configuration
+### OpenClaw web UI (port 18789)
 
-- Configuration examples: https://docs.openclaw.ai/gateway/configuration-examples
+1. In API builder, expose port **18789**.
+2. Leave port auth off; OpenClaw handles auth (e.g. `?token=…`).
+3. Use the token flow your setup expects (e.g. `change-me-now` where applicable).
 
-## Data
+### OpenClaw configuration
 
-Session transcripts are stored as JSONL at:
+- Examples: [OpenClaw gateway configuration](https://docs.openclaw.ai/gateway/configuration-examples)
 
-* `~/.openclaw/agents/<agentId>/sessions/<SessionId>.jsonl`
-
-Configuration lives at:
-
-* `~/.openclaw/openclaw.json`
-
-## Credits
-
-By default this environment is preconfigured with your personal LIGHTNING_API_KEY. It will consume credits during conversations and you can top up at any point in time.
-
-## Accessing OpenClaw web UI
-
-1. Click on the API builder on the right side and add port 18789. 
-2. Leave authentication off, OpenClaw handles authentication on its own
-3. Open the URL and append `?token=change-me-now`, this will authenticate your session
-
-## Providers and Models
-
-We have already preconfigured Lightning AI models to be used as a provider, it will work out of the box. 
-To try out different models, go to our [models page](https://lightning.ai/lightning-ai/models?section=allmodels) and specify new ones with a prefix `custom-proxy`, for example:
+**Models (`custom-proxy` on Lightning):** point at models from the [Lightning models catalog](https://lightning.ai/lightning-ai/models?section=allmodels) with the `custom-proxy/` prefix, for example:
 
 ```json
- "agents": {
-    "defaults": {
-      "model": {
-        "primary": "custom-proxy/openai/gpt-5.2-2025-12-11"
+{
+  “agents”: {
+    “defaults”: {
+      “model”: {
+        “primary”: “custom-proxy/openai/gpt-5.2-2025-12-11”
       },
-      "workspace": "/teamspace/studios/this_studio/.openclaw/workspace",
-      "compaction": {
-        "mode": "safeguard"
+      “workspace”: “/teamspace/studios/this_studio/.openclaw/workspace”,
+      “compaction”: { “mode”: “safeguard” },
+      “heartbeat”: {
+        “model”: “custom-proxy/openai/gpt-5.2-2025-12-11”
       },
-      "heartbeat": {
-        "model": "custom-proxy/openai/gpt-5.2-2025-12-11"
-      },
-      "maxConcurrent": 4,
-      "subagents": {
-        "maxConcurrent": 8
-      }
+      “maxConcurrent”: 4,
+      “subagents”: { “maxConcurrent”: 8 }
     }
-  },
+  }
+}
 ```
 
-## Next steps
+Tune model IDs to match what your workspace exposes.
 
-Go ahead and install addons
+### Data paths (in the studio)
 
+| What | Where |
+|------|--------|
+| Session transcripts (JSONL) | `~/.openclaw/agents/<agentId>/sessions/<SessionId>.jsonl` |
+| Effective config after boot | `~/.openclaw/openclaw.json` |
+
+### Credits
+
+Usage can draw on your **`LIGHTNING_API_KEY`** and consume Lightning credits; manage billing in your Lightning account.
+
+### Utility script
+
+- **[`pre-publish-clear.sh`](pre-publish-clear.sh)** — clears OpenClaw session state and `openclaw.json` before publishing; adjust paths if you run outside Lightning.
+
+</details>
+
+---
+
+## Security
+
+Keep **`.env`**, **`.openclaw/**`, and IDE server stubs **out of git**. If those ever reached a public remote, **rotate** exposed API keys or device credentials and consider history cleanup (e.g. [`git filter-repo`](https://github.com/newren/git-filter-repo)).

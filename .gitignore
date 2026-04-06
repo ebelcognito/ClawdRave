@@ -1,5 +1,23 @@
-.openclaw/agents
-.openclaw/sessions/*
-.openclaw/workspace/memory/*
-.openclaw/logs
-.openclaw/workspace/memory/*
+# Secrets and local env
+.env
+.env.*
+!.env.example
+
+# OpenClaw runtime (generated from initial_openclaw.json / gateway)
+.openclaw/
+
+# IDE and editor
+.idea/
+.vscode/
+.claude/
+.cursor-server/
+.vscode-server/
+.windsurf-server/
+
+# OS and shell
+.viminfo
+.DS_Store
+
+# Dependencies and build
+clawdrave/node_modules/
+clawdrave/dist/

@@ -323,8 +323,8 @@ app.post('/api/agent/:id/message', async (req, res) => {
       payload: { agentId: id, message: result.text, meta: result.meta },
     });
 
-    // Step 7: Run conflict detector
-    const conflict = detectConflicts({
+    // Step 7: Run conflict detector (LLM-based with regex fallback)
+    const conflict = await detectConflicts({
       agentId: id,
       message,
       response: result.text,
@@ -341,15 +341,17 @@ app.post('/api/agent/:id/message', async (req, res) => {
         mismatches: conflict.mismatches,
       });
 
-      // After 3 seconds, propose a resolution
+      // After 3 seconds, propose a resolution (use LLM-generated resolution if available)
       setTimeout(() => {
+        const defaultResolution = {
+          naming: 'Standardize on camelCase for API transport, with server-side snake_case mapping',
+          types: 'Use integer cents in API, format to strings in frontend display layer',
+          structure: 'Use flat response objects with optional nested metadata',
+        };
+
         broadcastEvent('resolution_proposed', 'system', {
           conflictIds: [conflict.conflictId],
-          proposal: {
-            naming: 'Standardize on camelCase for API transport, with server-side snake_case mapping',
-            types: 'Use integer cents in API, format to strings in frontend display layer',
-            structure: 'Use flat response objects with optional nested metadata',
-          },
+          proposal: conflict.resolution || defaultResolution,
         });
       }, 3000);
     }
