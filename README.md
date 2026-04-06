@@ -2,11 +2,11 @@
 
 **A safe and efficient framework for collaborative vibecoding.**
 
-**2nd place** at the [Personalized Agents Hackathon](https://luma.com/0xjqdkau?tk=xzij4I) in NYC.
+**2nd place** at the Lightning.ai X Validia [Personalized Agents Hackathon](https://luma.com/0xjqdkau?tk=xzij4I) in NYC.
 
-Work with multiple AI agents together — shared context, clear handoffs, and guardrails — so vibecoding stays fast without turning into chaos.
+Work with multiple AI agents together, with a **unified oversight of agentic output**, and **safety**, make vibecoding fast and efficient even while collaborating without each agent wasting tokens on understanding another agent's slop
 
-ClawdRave gives you **Mission Control**: dual agent lanes (Kai & Nova), a **bridge** between them, a **security feed**, conflict handling, and demo or live modes. Collaboration is visible and bounded, not a black box.
+ClawdRave gives you **Mission Control**: multi agent lanes, a **bridge** between them, a **security feed**, conflict handling, and demo or live modes. Collaboration is visible and bounded, not a black box.
 
 ---
 
