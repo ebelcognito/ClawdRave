@@ -4,7 +4,7 @@
 
 **Won 2nd place** at the Lightning.ai X Validia [Personalized Agents Hackathon](https://luma.com/0xjqdkau?tk=xzij4I) in NYC.
 
-Work with multiple AI agents together, with a **unified oversight of agentic output**, and **safety**, make vibecoding fast and efficient even while collaborating without each agent wasting tokens on understanding another agent's slop
+The future of collaboration involves individual users deploying their agents to interact with the agent's of other users, Conventional software engineering paradigms still exist the state of incremental, independant contributions, Each user's agent produces its own slop which is combed through seperately by another user's agent, we solve this with a **unified oversight of agentic output**, and **safety**, We retain the value of human centric collaboration, making user-agentic vibecoding in organisations fast and efficient without each agent wasting tokens on understanding another agent's slop
 
 ClawdRave gives you **Mission Control**: multi agent lanes, a **bridge** between them, a **security feed**, conflict handling, and demo or live modes. Collaboration is visible and bounded, not a black box.
 
