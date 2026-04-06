@@ -113,8 +113,6 @@ Usage can draw on your **`LIGHTNING_API_KEY`** and consume Lightning credits; ma
 
 </details>
 
----
 
-## Security
 
-Keep **`.env`**, **`.openclaw/**`, and IDE server stubs **out of git**. If those ever reached a public remote, **rotate** exposed API keys or device credentials and consider history cleanup (e.g. [`git filter-repo`](https://github.com/newren/git-filter-repo)).
+
