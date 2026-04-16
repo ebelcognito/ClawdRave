@@ -2,7 +2,7 @@
 
 **A safe and efficient framework for collaborative vibecoding.**
 
-**Won 2nd place** at the Lightning.ai X Validia [Personalized Agents Hackathon](https://luma.com/0xjqdkau?tk=xzij4I) in NYC.
+**Won 2nd place** at the Lightning.ai X Validia [Personalized Agents Hackathon](https://luma.com/0xjqdkau?tk=xzij4I) in NYC!!! :)))
 
 The future of collaboration is individual users deploying their own agents to work alongside the agents of others, Conventional software engineering paradigms still exist in the state of incremental, piecewise contributions, Each user's agent produces its own slop which is combed through seperately by another user's agent, we solve this with a **unified oversight of agentic output**, and **safety**, We retain the value of human-centric collaboration, making user-agentic vibecoding in organisations fast and efficient without each agent wasting tokens on understanding another agent's slop
 
